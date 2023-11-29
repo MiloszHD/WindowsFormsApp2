@@ -76,5 +76,20 @@ namespace WindowsFormsApp2
         {
 
         }
+
+        private void losowy_CheckedChanged(object sender, EventArgs e)
+        {
+            ciagLosowy.Losowy(5);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

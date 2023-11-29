@@ -42,16 +42,16 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rosnacy = new System.Windows.Forms.CheckBox();
+            this.malejacy = new System.Windows.Forms.CheckBox();
+            this.losowy = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -80,9 +80,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.rosnacy);
+            this.groupBox1.Controls.Add(this.malejacy);
+            this.groupBox1.Controls.Add(this.losowy);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(108, 123);
@@ -91,6 +91,39 @@
             this.groupBox1.Text = "rodzaj ciagu";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // rosnacy
+            // 
+            this.rosnacy.AutoSize = true;
+            this.rosnacy.Location = new System.Drawing.Point(10, 101);
+            this.rosnacy.Name = "rosnacy";
+            this.rosnacy.Size = new System.Drawing.Size(63, 17);
+            this.rosnacy.TabIndex = 2;
+            this.rosnacy.Text = "rosnacy";
+            this.rosnacy.UseVisualStyleBackColor = true;
+            this.rosnacy.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // malejacy
+            // 
+            this.malejacy.AutoSize = true;
+            this.malejacy.Location = new System.Drawing.Point(10, 65);
+            this.malejacy.Name = "malejacy";
+            this.malejacy.Size = new System.Drawing.Size(67, 17);
+            this.malejacy.TabIndex = 1;
+            this.malejacy.Text = "malejacy";
+            this.malejacy.UseVisualStyleBackColor = true;
+            this.malejacy.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // losowy
+            // 
+            this.losowy.AutoSize = true;
+            this.losowy.Location = new System.Drawing.Point(10, 27);
+            this.losowy.Name = "losowy";
+            this.losowy.Size = new System.Drawing.Size(58, 17);
+            this.losowy.TabIndex = 0;
+            this.losowy.Text = "losowy";
+            this.losowy.UseVisualStyleBackColor = true;
+            this.losowy.CheckedChanged += new System.EventHandler(this.losowy_CheckedChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.checkBox8);
@@ -98,7 +131,7 @@
             this.groupBox2.Controls.Add(this.checkBox6);
             this.groupBox2.Controls.Add(this.checkBox5);
             this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Location = new System.Drawing.Point(3, 132);
+            this.groupBox2.Location = new System.Drawing.Point(3, 133);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(185, 240);
             this.groupBox2.TabIndex = 6;
@@ -106,83 +139,15 @@
             this.groupBox2.Text = "rodzaj sortowania";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // chart1
+            // checkBox8
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(194, 132);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(300, 241);
-            this.chart1.TabIndex = 7;
-            this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(10, 27);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(58, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "losowy";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(10, 65);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(67, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "malejacy";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(10, 101);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(63, 17);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "rosnacy";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(19, 19);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(78, 17);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "babelkowe";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(19, 53);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(82, 17);
-            this.checkBox5.TabIndex = 8;
-            this.checkBox5.Text = "przez wybor";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(19, 88);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(106, 17);
-            this.checkBox6.TabIndex = 9;
-            this.checkBox6.Text = "przez wstawianie";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(19, 160);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(61, 17);
+            this.checkBox8.TabIndex = 11;
+            this.checkBox8.Text = "szybkie";
+            this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // checkBox7
             // 
@@ -194,15 +159,52 @@
             this.checkBox7.Text = "przez scalanie";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // checkBox6
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(19, 160);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(61, 17);
-            this.checkBox8.TabIndex = 11;
-            this.checkBox8.Text = "szybkie";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(19, 88);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(106, 17);
+            this.checkBox6.TabIndex = 9;
+            this.checkBox6.Text = "przez wstawianie";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(19, 53);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(82, 17);
+            this.checkBox5.TabIndex = 8;
+            this.checkBox5.Text = "przez wybor";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(19, 19);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(78, 17);
+            this.checkBox4.TabIndex = 3;
+            this.checkBox4.Text = "babelkowe";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(194, 133);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(300, 240);
+            this.chart1.TabIndex = 7;
+            this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // panel1
             // 
@@ -229,6 +231,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -245,9 +248,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox rosnacy;
+        private System.Windows.Forms.CheckBox malejacy;
+        private System.Windows.Forms.CheckBox losowy;
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox6;
