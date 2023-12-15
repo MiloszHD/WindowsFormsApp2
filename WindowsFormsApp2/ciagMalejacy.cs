@@ -8,17 +8,12 @@ namespace WindowsFormsApp2
 {
     internal class ciagMalejacy
     {
-        public static void Malejacy(int Length) 
+        public static void Generuj(int poczatkowaWartosc, int krok, int iloscLiczb)
         {
-            if (Length <= 0)
+            for (int i = 0; i < iloscLiczb; i++)
             {
-                Console.WriteLine("Ciag malejacy jest pusty");
-                return;
-            }
-
-            for(int i = Length; i>=1; i--) 
-            {
-                Console.WriteLine(i);
+                int aktualnaWartosc = poczatkowaWartosc - i * krok;
+                Console.WriteLine(aktualnaWartosc);
             }
         }
     }

@@ -8,17 +8,12 @@ namespace WindowsFormsApp2
 {
     internal class ciagRosnacy
     {
-        public static void Rosnacy(int Length)
+        public static void Generuj(int poczatkowaWartosc, int krok, int iloscLiczb)
         {
-            if(Length <= 0) 
+            for (int i = 0; i < iloscLiczb; i++)
             {
-                Console.WriteLine("ciag rosnacy jest pusty");
-                return;
-            }
-
-            for(int i = 1; i<= Length; i++) 
-            {
-                Console.WriteLine(i);
+                int aktualnaWartosc = poczatkowaWartosc + i * krok;
+                Console.WriteLine(aktualnaWartosc);
             }
         }
     }

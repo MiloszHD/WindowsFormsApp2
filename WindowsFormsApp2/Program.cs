@@ -14,9 +14,7 @@ namespace WindowsFormsApp2
         [STAThread]
         static void Main()
         {
-            ciagMalejacy.Malejacy(5);
-            ciagRosnacy.Rosnacy(5);
-            ciagLosowy.Losowy(5);
+            
 
     
         }
