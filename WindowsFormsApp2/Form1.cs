@@ -19,9 +19,10 @@ namespace WindowsFormsApp2
         {
             
             InitializeComponent();
-            //chart1.Series.Clear();
+            chart1.Series.Clear();
 
-            //chart1.Series.Add(series);
+            chart1.Series.Add(series);
+            
         }
 
         private void groupBox1_Enter(object sender, EventArgs e) // okno ciagow
@@ -96,41 +97,66 @@ namespace WindowsFormsApp2
             int[] wylosowane = new int[wielkosc];
             int[] rosnace = new int[wielkosc];
             int[] malejace = new int[wielkosc];
-            //chart1.ChartAreas.First().AxisY.LabelStyle.Format = "0ms";
+            chart1.ChartAreas.First().AxisY.LabelStyle.Format = "0ms";
 
             if(this.rosnace.Checked)
-                for(int i=1; i< wielkosc; i++)
+            {
+                for (int i = 0; i < wielkosc; i++)
                 {
                     rosnace[i] = i;
                 }
-            if (this.malejace.Checked)
-                for (int i = wielkosc - 1; i > 0; i--)
+            }
+             if (this.malejace.Checked)
+            {
+                int b = 0;
+                for (int i = 0; i < wielkosc; i--)
                 {
-                    malejace[i] = i;
+                    b = wielkosc;
+                    malejace[i] = b-i;
                 }
+            }
+                
             if(losowe.Checked)
             {
                 Random rnd = new Random();
                 int poczatek = 0;
                 int koniec = 100;
-                for(int i=0; i <wielkosc - 1; i++) 
+                for(int i=0; i < wielkosc - 1; i++) 
                 {
                     wylosowane[i] = rnd.Next(poczatek, koniec);
                 }
             }
             if(babelkowe.Checked)
             {
-                int[] liczby = new int[wielkosc];
+                sorBab b = new sorBab();
                 if(this.rosnace.Checked) 
                 {
-                    sorBab.babel(rosnace);
+                    b.babel(rosnace);
+                    Series baR = new Series("bab-ros");
+                    baR.Points.Add(b.duration);
+                    chart1.Series.Add(baR);
                 }
                 if(this.malejace.Checked)
                 {
-                    sorBab.babel(malejace);
+                    b.babel(malejace);
+                    Series baM = new Series("bab-mal");
+                    baM.Points.Add(b.duration);
+                    chart1.Series.Add(baM);
+                }
+                if (losowe.Checked)
+                {
+                    b.babel(wylosowane);
+                    Series baL = new Series("bab-los");
+                    baL.Points.Add(b.duration);
+                    chart1.Series.Add(baL);
                 }
 
             }
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
