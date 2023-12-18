@@ -23,5 +23,13 @@ namespace WindowsFormsApp2
                 }
             }
         }
+        public void StartCount()
+        {
+            start = DateTime.Now;
+        }
+        public void StopCount()
+        {
+            stop = DateTime.Now;
+        }
     }
 }

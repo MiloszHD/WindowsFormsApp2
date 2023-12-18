@@ -59,6 +59,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sorBab.cs" />
+    <Compile Include="sorScal.cs" />
+    <Compile Include="sorSzybkie.cs" />
+    <Compile Include="sorWstaw.cs" />
+    <Compile Include="sorWybor.cs" />
     <Compile Include="timer.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

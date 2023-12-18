@@ -58,7 +58,7 @@ namespace WindowsFormsApp2
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) // caly ekran
         {
-
+            
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e) //babelkowe
@@ -150,11 +150,64 @@ namespace WindowsFormsApp2
                     baL.Points.Add(b.duration);
                     chart1.Series.Add(baL);
                 }
-
+            }
+            if(przez_wybor.Checked)
+            {
+                sorWybor wy = new sorWybor();
+                if(this.rosnace.Checked)
+                {
+                    sorWybor.wybor(rosnace);
+                    Series baR = new Series("wybor-rosnace");
+                    baR.Points.Add(wy.duration);
+                    chart1.Series.Add(baR);
+                }
+                if(this.malejace.Checked)
+                {
+                    sorWybor.wybor(malejace);
+                    Series baM = new Series("wybor-malejace");
+                    baM.Points.Add(wy.duration);
+                    chart1.Series.Add(baM);
+                }
+                if(losowe.Checked)
+                {
+                    sorWybor.wybor(wylosowane);
+                    Series baL = new Series("wybor-losowe");
+                    baL.Points.Add(wy.duration);
+                    chart1.Series.Add(baL);
+                }
+            }
+            if(przez_wstawianie.Checked)
+            {
+                sorWstaw sw = new sorWstaw();
+                if(this.rosnace.Checked)
+                {
+                    sw.wstaw(rosnace);
+                    Series wR = new Series("wstaw-ros");
+                    wR.Points.Add(sw.duration);
+                    chart1.Series.Add(wR);
+                }
+                if(this.malejace.Checked)
+                {
+                    sw.wstaw(malejace);
+                    Series wS = new Series("wstaw-mal");
+                    wS.Points.Add(sw.duration);
+                    chart1.Series.Add(wS);
+                }
+                if(losowe.Checked)
+                {
+                    sw.wstaw(wylosowane);
+                    Series wL = new Series("wstaw-los");
+                    wL.Points.Add(sw.duration);
+                    chart1.Series.Add(wL);
+                }
+            }
+            if(szybkie.Checked)
+            {
+                
             }
         }
 
-        private void chart1_Click(object sender, EventArgs e)
+        private void chart1_Click(object sender, EventArgs e) //wykres
         {
 
         }

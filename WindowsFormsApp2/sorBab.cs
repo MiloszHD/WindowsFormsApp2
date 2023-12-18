@@ -6,26 +6,16 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp2
 {
-    internal class sorBab
+    internal class sorBab : timer
     {
-        private static DateTime start, stop;
-        public Double duration
-        {
-            get
-            {
-                if (start != null && stop != null)
-                {
-                    return (stop - start).TotalMilliseconds;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
         public void babel(int[] liczby)
         {
-            start = DateTime.Now;
+            int[] dos = new int[liczby.Length];
+            for(int k = 0; k <liczby.Length; k++)
+            {
+                dos[k] = liczby[k];
+            }
+            StartCount();
             for (int i = 0; i < liczby.Length - 1; i++)
             {
                 for (int j = 0; j < liczby.Length - i - 1; j++)
@@ -36,7 +26,7 @@ namespace WindowsFormsApp2
                         liczby[j + 1] = temp;
                     }
             }
-            stop = DateTime.Now;
+            StopCount();
         }
 
     }
