@@ -11,23 +11,22 @@ namespace WindowsFormsApp2
         
         public void wstaw(int[] liczby)
         {
-            int[] dos = new int[liczby.Length];
-            for (int k = 0; k < liczby.Length; k++)
-            {
-                dos[k] = liczby[k];
-            }
+            int[] ilo = new int[liczby.Length];
+
+            Array.Copy(liczby, ilo, liczby.Length);
+
             zacznij();
             for (int i = 0; i < liczby.Length; ++i)
             {
-                int current = dos[i];
+                int ob = ilo[i];
                 int j = i - 1;
 
-                while(j >= 0 && dos[j] > current)
+                while(j >= 0 && ilo[j] > ob)
                 {
-                    dos[j+1] = dos[j];
+                    ilo[j+1] = ilo[j];
                     j = j - 1;
                 }
-                dos[j+1] = current;
+                ilo[j+1] = ob;
             }
             zatrzymaj();
         }

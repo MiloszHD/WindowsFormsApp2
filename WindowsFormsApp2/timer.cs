@@ -8,14 +8,15 @@ namespace WindowsFormsApp2
 {
      public abstract class timer
     {
-        private static DateTime start, stop;
-        public Double duration
+        private static DateTime startTime, stopTime;
+        public Double czas
         {
             get
             {
-                if(start != null && stop != null) 
-                { 
-                    return(stop - start).TotalMilliseconds;
+                if(startTime != DateTime.MinValue && stopTime != DateTime.MinValue) 
+                {
+                    TimeSpan elapsed = stopTime - startTime;
+                    return elapsed.TotalMilliseconds;
                 }
                 else
                 {
@@ -25,11 +26,11 @@ namespace WindowsFormsApp2
         }
         public static void zacznij()
         {
-            start = DateTime.Now;
+            startTime = DateTime.Now;
         }
         public static void zatrzymaj()
         {
-            stop = DateTime.Now;
+            stopTime = DateTime.Now;
         }
     }
 }

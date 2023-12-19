@@ -10,33 +10,33 @@ namespace WindowsFormsApp2
     {
         public void szybko(int[] liczby, int left, int right)
         {
-            int[] dos = new int[liczby.Length];
-            for (int k = 0; k < liczby.Length; k++)
-            {
-                dos[k] = liczby[k];
-            }
+            int[] ilo = new int[liczby.Length];
+
+            Array.Copy(liczby, ilo, liczby.Length);
+
             zacznij();
-            szybkoo(dos, left, right);
+            szybkoo(ilo, left, right);
             zatrzymaj();
         }
-        public static void szybkoo(int[] sliczby, int left, int right)
+        public static void szybkoo(int[] array, int left, int right)
         {
             int i = left;
             int j = right;
-            int pivot = sliczby[(left + right) / 2];
+            int pivot = array[(left + right) / 2];
             while (i < j)
             {
-                while (sliczby[i] < pivot) i++;
-                while (sliczby[j] > pivot) j--;
+                while (array[i] < pivot) i++;
+                while (array[j] > pivot) j--;
+                
                 if(i <= j)
                 {
-                    int tmp= sliczby[i];
-                    sliczby[i++] = sliczby[j];
-                    sliczby[j--] = tmp;
+                    int tym= array[i];
+                    array[i++] = array[j];
+                    array[j--] = tym;
                 }
             }
-            if(left < j) szybkoo(sliczby, left, j);
-            if(i < right) szybkoo(sliczby, i, right);
+            if(i < right) szybkoo(array, i, right);
+            if(left < j) szybkoo(array, left, j);
         }
     }
 }

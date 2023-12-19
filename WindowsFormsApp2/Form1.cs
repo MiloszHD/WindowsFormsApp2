@@ -8,21 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        //Series series = new Series();
+        
 
         public Form1()
         {
-            
-            InitializeComponent();
-            chart1.Series.Clear();
 
-            //chart1.Series.Add(series);
+            InitializeComponent();
+            wykres.Series.Clear();
+
             
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e) // okno ciagow
@@ -37,17 +38,17 @@ namespace WindowsFormsApp2
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e) // ciag rosnacy
         {
-            
+
         }
 
         private void losowy_CheckedChanged(object sender, EventArgs e) // ciag losowy
         {
-            
+
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e) // ciag malejacy
         {
-          
+
 
         }
 
@@ -58,7 +59,7 @@ namespace WindowsFormsApp2
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) // caly ekran
         {
-            
+
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e) //babelkowe
@@ -93,171 +94,203 @@ namespace WindowsFormsApp2
 
         private void button1_Click_3(object sender, EventArgs e) // pokaz wynik
         {
-            chart1.Series.Clear();
+            wykres.Series.Clear();
 
-            int wielkosc = 1000;
-            int[] losowe = new int[wielkosc];
-            int[] rosnace = new int[wielkosc];
-            int[] malejace = new int[wielkosc];
-            chart1.ChartAreas.First().AxisY.LabelStyle.Format = "0ms";
-            chart1.ChartAreas.First().AxisX.LabelStyle.Format = "1";
-
-            if(this.rosnace.Checked)
+            int size = 0;
+            if (!rosnace.Checked && !malejace.Checked && !losowe.Checked)
             {
-                for (int i = 0; i < wielkosc; i++)
+                MessageBox.Show("Kliknij wybrany rodzaj ciągu");
+                return;
+            }
+            if (!babelk.Checked && !przez_wyb.Checked && !przez_wstaw.Checked && !szybkie.Checked && !przez_scal.Checked)
+            {
+                MessageBox.Show("Kliknij wybrany rodzaj sortowania");
+                return;
+            }
+
+            if (!int.TryParse(tekst.Text, out size))
+            {
+                MessageBox.Show("Wpisz ilosc elementow");
+                return;
+            }
+            else
+            {
+                size = Convert.ToInt32(tekst.Text);
+            }
+
+
+            int[] losowo = new int[size];
+            int[] rosnaco = new int[size];
+            int[] malejaco = new int[size];
+            wykres.ChartAreas.First().AxisY.LabelStyle.Format = "0ms";
+            wykres.ChartAreas.First().AxisX.LabelStyle.Format = "1";
+
+            if (this.rosnace.Checked)
+            {
+                for (int i = 0; i < size; i++)
                 {
-                    rosnace[i] = i;
+                    rosnaco[i] = i;
                 }
             }
-             if (this.malejace.Checked)
+            if (this.malejace.Checked)
             {
                 int b = 0;
-                for (int i = 0; i < wielkosc; i--)
+                for (int i = 0; i < size; i++)
                 {
-                    b = wielkosc;
-                    malejace[i] = b-i;
+                    b = size;
+                    malejaco[i] = b - i;
                 }
             }
-                
-            if(this.losowe.Checked)
+
+            if (this.losowe.Checked)
             {
                 Random rnd = new Random();
                 int poczatek = 0;
-                int koniec = 100;
-                for(int i=0; i < wielkosc - 1; i++) 
+                int koniec = 1001;
+                for (int i = 0; i < size - 1; i++)
                 {
-                    losowe[i] = rnd.Next(poczatek, koniec);
+                    losowo[i] = rnd.Next(poczatek, koniec);
                 }
             }
-            if(babelkowe.Checked)
+            if (babelk.Checked)
             {
                 sorBab b = new sorBab();
-                if(this.rosnace.Checked) 
+                if (this.rosnace.Checked)
                 {
-                    b.babel(rosnace);
+                    b.babel(rosnaco);
                     Series baR = new Series("bab-ros");
-                    baR.Points.Add(b.duration);
-                    chart1.Series.Add(baR);
+                    baR.Points.Add(b.czas);
+                    wykres.Series.Add(baR);
                 }
-                if(this.malejace.Checked)
+                if (this.malejace.Checked)
                 {
-                    b.babel(malejace);
+                    b.babel(malejaco);
                     Series baM = new Series("bab-mal");
-                    baM.Points.Add(b.duration);
-                    chart1.Series.Add(baM);
+                    baM.Points.Add(b.czas);
+                    wykres.Series.Add(baM);
                 }
                 if (this.losowe.Checked)
                 {
-                    b.babel(losowe);
+                    b.babel(losowo);
                     Series baL = new Series("bab-los");
-                    baL.Points.Add(b.duration);
-                    chart1.Series.Add(baL);
+                    baL.Points.Add(b.czas);
+                    wykres.Series.Add(baL);
                 }
             }
-            if(przez_wybor.Checked)
+            if (przez_wyb.Checked)
             {
                 sorWybor wy = new sorWybor();
-                if(this.rosnace.Checked)
+                if (this.rosnace.Checked)
                 {
-                    sorWybor.wybor(rosnace);
+                    sorWybor.wybor(rosnaco);
                     Series baR = new Series("wybor-rosnace");
-                    baR.Points.Add(wy.duration);
-                    chart1.Series.Add(baR);
+                    baR.Points.Add(wy.czas);
+                    wykres.Series.Add(baR);
                 }
-                if(this.malejace.Checked)
+                if (this.malejace.Checked)
                 {
-                    sorWybor.wybor(malejace);
+                    sorWybor.wybor(malejaco);
                     Series baM = new Series("wybor-malejace");
-                    baM.Points.Add(wy.duration);
-                    chart1.Series.Add(baM);
+                    baM.Points.Add(wy.czas);
+                    wykres.Series.Add(baM);
                 }
-                if(this.losowe.Checked)
+                if (this.losowe.Checked)
                 {
-                    sorWybor.wybor(losowe);
+                    sorWybor.wybor(losowo);
                     Series baL = new Series("wybor-losowe");
-                    baL.Points.Add(wy.duration);
-                    chart1.Series.Add(baL);
+                    baL.Points.Add(wy.czas);
+                    wykres.Series.Add(baL);
                 }
             }
-            if(przez_wstawianie.Checked)
+            if (przez_wstaw.Checked)
             {
                 sorWstaw sw = new sorWstaw();
-                if(this.rosnace.Checked)
+                if (this.rosnace.Checked)
                 {
-                    sw.wstaw(rosnace);
+                    sw.wstaw(rosnaco);
                     Series wR = new Series("wstaw-ros");
-                    wR.Points.Add(sw.duration);
-                    chart1.Series.Add(wR);
+                    wR.Points.Add(sw.czas);
+                    wykres.Series.Add(wR);
                 }
-                if(this.malejace.Checked)
+                if (this.malejace.Checked)
                 {
-                    sw.wstaw(malejace);
+                    sw.wstaw(malejaco);
                     Series wS = new Series("wstaw-mal");
-                    wS.Points.Add(sw.duration);
-                    chart1.Series.Add(wS);
+                    wS.Points.Add(sw.czas);
+                    wykres.Series.Add(wS);
                 }
-                if(this.losowe.Checked)
+                if (this.losowe.Checked)
                 {
-                    sw.wstaw(losowe);
+                    sw.wstaw(losowo);
                     Series wL = new Series("wstaw-los");
-                    wL.Points.Add(sw.duration);
-                    chart1.Series.Add(wL);
+                    wL.Points.Add(sw.czas);
+                    wykres.Series.Add(wL);
                 }
             }
-            if(szybkie.Checked)
+            if (szybkie.Checked)
             {
                 sorSzybkie s = new sorSzybkie();
-                if(this.rosnace.Checked)
+                if (this.rosnace.Checked)
                 {
-                    s.szybko(rosnace, 0, wielkosc - 1);
+                    s.szybko(rosnaco, 0, size - 1);
                     Series sr = new Series("szyb-ros");
-                    sr.Points.Add(s.duration);
-                    chart1.Series.Add(sr);
+                    sr.Points.Add(s.czas);
+                    wykres.Series.Add(sr);
                 }
-                if(this.malejace.Checked)
+                if (this.malejace.Checked)
                 {
-                    s.szybko(malejace, 0 , wielkosc - 1);
+                    s.szybko(malejaco, 0, size - 1);
                     Series sm = new Series("szyb-mal");
-                    sm.Points.Add(s.duration);
-                    chart1.Series.Add(sm);
+                    sm.Points.Add(s.czas);
+                    wykres.Series.Add(sm);
                 }
-                if(this.losowe.Checked)
+                if (this.losowe.Checked)
                 {
-                    s.szybko(losowe, 0, wielkosc - 1);
+                    s.szybko(losowo, 0, size - 1);
                     Series sl = new Series("szyb-los");
-                    sl.Points.Add(s.duration);
-                    chart1.Series.Add(sl);
-                }           
+                    sl.Points.Add(s.czas);
+                    wykres.Series.Add(sl);
+                }
             }
-            if(przez_scalanie.Checked)
+            if (przez_scal.Checked)
             {
                 sorScal c = new sorScal();
-                if(this.rosnace.Checked)
+                if (this.rosnace.Checked)
                 {
-                    c.scalanie(rosnace, 0, wielkosc - 1);
+                    c.scalanie(rosnaco, 0, size - 1);
                     Series sr = new Series("scal-ros");
-                    sr.Points.Add(c.duration);
-                    chart1.Series.Add(sr);
+                    sr.Points.Add(c.czas);
+                    wykres.Series.Add(sr);
                 }
-                if(this.malejace.Checked)
+                if (this.malejace.Checked)
                 {
-                    c.scalanie(malejace, 0, wielkosc - 1);
+                    c.scalanie(malejaco, 0, size - 1);
                     Series sm = new Series("scal-mal");
-                    sm.Points.Add(c.duration);
-                    chart1.Series.Add(sm);
+                    sm.Points.Add(c.czas);
+                    wykres.Series.Add(sm);
                 }
-                if(this.losowe.Checked)
+                if (this.losowe.Checked)
                 {
-                    c.scalanie(losowe, 0, wielkosc - 1);
+                    c.scalanie(losowo, 0, size - 1);
                     Series sw = new Series("scal-los");
-                    sw.Points.Add(c.duration);
-                    chart1.Series.Add(sw);
+                    sw.Points.Add(c.czas);
+                    wykres.Series.Add(sw);
                 }
             }
 
         }
 
         private void chart1_Click(object sender, EventArgs e) //wykres
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e) //okno elementow
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e) // ilosc elementow
         {
 
         }
