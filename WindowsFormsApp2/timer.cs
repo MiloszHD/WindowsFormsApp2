@@ -23,11 +23,11 @@ namespace WindowsFormsApp2
                 }
             }
         }
-        public static void StartCount()
+        public static void zacznij()
         {
             start = DateTime.Now;
         }
-        public static void StopCount()
+        public static void zatrzymaj()
         {
             stop = DateTime.Now;
         }

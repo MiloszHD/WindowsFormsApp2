@@ -6,89 +6,71 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp2
 {
-    internal class sorScal
+    internal class sorScal : timer
     {
-        private static DateTime start, stop;
-        public Double duration
+        public void scalanie(int[] liczby, int left, int right)
         {
-            get
+            int[] dos = new int[liczby.Length];
+            for (int k = 0; k < liczby.Length; k++)
             {
-                if (start != null && stop != null)
+                dos[k] = liczby[k];
+            }
+            zacznij();
+            scalanie2(dos, left, right);
+            zatrzymaj();
+        }
+        public void scal(int[] dos, int left, int mid, int right)
+        {
+            int i = left, j = mid + 1;
+
+            int[] pom = new int[dos.Length];
+
+            for (int m = left; m < dos.Length; m++)
+            {
+                pom[m] = dos[m];
+            }
+
+            for (int k = left; k <= right; k++)
+                if (i <= mid)
                 {
-                    return (stop - start).TotalMilliseconds;
+                    if (j <= right)
+                    {
+                        if (pom[j] < pom[i])
+                        {
+                            dos[k] = pom[j++];
+                        }
+                        else
+                        {
+                            dos[k] = pom[i++];
+                        }
+                    }
+                    else
+                    {
+                        dos[k] = pom[i++];
+                    }
                 }
                 else
                 {
-                    return (0);
+                    dos[k] = pom[j++];
                 }
-            }
         }
-        public static void scalanie(int[] liczby, int left, int right)
+        public void scalanie2(int[] dos, int left, int right)
         {
-            start = DateTime.Now;
 
-            if (left < right)
+            if (right <= left)
             {
-                int middle = (left + right) / 2;
-
-                // Sortuj lewą i prawą część
-                scalanie(liczby, left, middle);
-                scalanie(liczby, middle + 1, right);
-
-                // Scal posortowane części
-                Scal(liczby, left, middle, right);
+                return;
             }
 
-            stop = DateTime.Now;
+            int srodek = (right + left) / 2;
+
+
+            scalanie2(dos, left, srodek);
+            scalanie2(dos, srodek + 1, right);
+
+
+            scal(dos, left, srodek, right);
         }
 
-        public static void Scal(int[] liczby, int left, int middle, int right)
-        {
-            int n1 = middle - left + 1;
-            int n2 = right - middle;
-
-            int[] LeftArray = new int[n1];
-            int[] RightArray = new int[n2];
-
-            // Skopiuj dane do pomocniczych tablic
-            for (int i = 0; i < n1; ++i)
-                LeftArray[i] = liczby[left + i];
-            for (int j = 0; j < n2; ++j)
-                RightArray[j] = liczby[middle + 1 + j];
-
-            // Scal dane z powrotem do tablicy
-            int x = 0, y = 0;
-            int k = left;
-            while (x < n1 && y < n2)
-            {
-                if (LeftArray[x] <= RightArray[y])
-                {
-                    liczby[k] = LeftArray[x];
-                    x++;
-                }
-                else
-                {
-                    liczby[k] = RightArray[y];
-                    y++;
-                }
-                k++;
-            }
-
-            // Skopiuj pozostałe elementy z LeftArray (jeśli są)
-            while (x < n1)
-            {
-                liczby[k] = LeftArray[x];
-                x++;
-                k++;
-            }
-
-            // Skopiuj pozostałe elementy z RightArray (jeśli są)
-            while (y < n2)
-            {
-                liczby[k] = RightArray[y];
-                y++;
-                k++;
-            }
-        }
     }
 }

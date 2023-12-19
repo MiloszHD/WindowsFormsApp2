@@ -15,7 +15,7 @@ namespace WindowsFormsApp2
             {
                 dos[k] = liczby[k];
             }
-            StartCount();
+            zacznij();
             for (int i = 0; i < liczby.Length - 1; i++)
             {
                 for (int j = 0; j < liczby.Length - i - 1; j++)
@@ -26,7 +26,7 @@ namespace WindowsFormsApp2
                         liczby[j + 1] = temp;
                     }
             }
-            StopCount();
+            zatrzymaj();
         }
 
     }

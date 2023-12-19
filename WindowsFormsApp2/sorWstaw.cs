@@ -16,7 +16,7 @@ namespace WindowsFormsApp2
             {
                 dos[k] = liczby[k];
             }
-            StartCount();
+            zacznij();
             for (int i = 0; i < liczby.Length; ++i)
             {
                 int current = dos[i];
@@ -29,7 +29,7 @@ namespace WindowsFormsApp2
                 }
                 dos[j+1] = current;
             }
-            StopCount();
+            zatrzymaj();
         }
     }
 }

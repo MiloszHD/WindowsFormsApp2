@@ -16,7 +16,7 @@ namespace WindowsFormsApp2
                 dos[k] = liczby[k];
             }
 
-            StartCount();
+            zacznij();
             for (int i=0; i<liczby.Length - 1; i++)
             {
                 int min_idx = i;
@@ -28,8 +28,8 @@ namespace WindowsFormsApp2
                 dos[min_idx] = dos[i];
                 dos[i] = temp;
             }
-            
 
+            zatrzymaj();
         }
     }
 }
