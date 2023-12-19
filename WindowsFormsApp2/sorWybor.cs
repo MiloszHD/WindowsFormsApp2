@@ -8,7 +8,7 @@ namespace WindowsFormsApp2
 {
     internal class sorWybor : timer
     {
-        public void wybor(int[] liczby)
+        public static void wybor(int[] liczby)
         {
             int[] dos = new int[liczby.Length];
             for (int k = 0; k < liczby.Length; k++)
@@ -28,7 +28,7 @@ namespace WindowsFormsApp2
                 dos[min_idx] = dos[i];
                 dos[i] = temp;
             }
-            StopCount();
+            
 
         }
     }

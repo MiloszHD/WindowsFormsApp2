@@ -21,7 +21,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
             chart1.Series.Clear();
 
-            chart1.Series.Add(series);
+            //chart1.Series.Add(series);
             
         }
 
@@ -37,7 +37,7 @@ namespace WindowsFormsApp2
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e) // ciag rosnacy
         {
-            //ciagRosnacy.Generuj(10, 2, 5);
+            
         }
 
         private void losowy_CheckedChanged(object sender, EventArgs e) // ciag losowy
@@ -47,7 +47,7 @@ namespace WindowsFormsApp2
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e) // ciag malejacy
         {
-          //   ciagMalejacy.Generuj(10, 2, 5);
+          
 
         }
 
@@ -93,11 +93,14 @@ namespace WindowsFormsApp2
 
         private void button1_Click_3(object sender, EventArgs e) // pokaz wynik
         {
+            chart1.Series.Clear();
+
             int wielkosc = 100;
             int[] wylosowane = new int[wielkosc];
             int[] rosnace = new int[wielkosc];
             int[] malejace = new int[wielkosc];
             chart1.ChartAreas.First().AxisY.LabelStyle.Format = "0ms";
+            chart1.ChartAreas.First().AxisX.LabelStyle.Format = "1";
 
             if(this.rosnace.Checked)
             {

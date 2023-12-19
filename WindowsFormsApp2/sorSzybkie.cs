@@ -8,9 +8,19 @@ namespace WindowsFormsApp2
 {
     internal class sorSzybkie : timer
     {
+        public void szybkoo(int[] liczby, int left, int right)
+        {
+            int[] dos = new int[liczby.Length];
+            for (int k = 0; k < liczby.Length; k++)
+            {
+                dos[k] = liczby[k];
+            }
+            StartCount();
+            szybkoo(dos, left, right);
+            StopCount();
+        }
         public static void szybko(int[] liczby, int left, int right)
         {
-            start = DateTime.Now;
             int i = left;
             int j = right;
             int pivot = liczby[(left + right) / 2];
@@ -27,7 +37,6 @@ namespace WindowsFormsApp2
             }
             if(left < j) szybko(liczby, left, j);
             if(i < right) szybko(liczby, i, right);
-            stop = DateTime.Now;
         }
     }
 }
